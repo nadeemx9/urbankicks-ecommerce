@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: urbankicks
+  datasource:
+    url: jdbc:mysql://localhost:3306/urbankicks2.0?createDatabaseIfNotExist=true
+    username: root
+    password: admin
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+
+
