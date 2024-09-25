@@ -75,4 +75,7 @@ public class UserRegister implements UserDetails {
     public enum Role {
         CUSTOMER, ADMIN
     }
+    public String getFullName() {
+        return firstname + " " + lastname;
+    }
 }
