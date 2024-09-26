@@ -1,6 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
+import { CommonService } from '../../services/common.service';
+import { Subscription } from 'rxjs';
+import { error, log } from 'console';
 
 @Component({
   selector: 'app-home',
@@ -11,12 +14,22 @@ import { RouterModule } from '@angular/router';
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit, OnDestroy {
+
+  subscription: Subscription = new Subscription
 
   constructor(
-    titleService : Title
-  ){
+    private titleService: Title,
+    private commonService: CommonService
+  ) {
     titleService.setTitle('UrbanKicks - Kick It!')
+
+  }
+  ngOnInit(): void {
+
   }
 
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
 }
