@@ -8,6 +8,5 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 public class AuthenticationResponse {
-    Boolean success;
     String token;
 }
