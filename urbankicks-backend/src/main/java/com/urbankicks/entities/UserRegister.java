@@ -41,7 +41,7 @@ public class UserRegister implements UserDetails {
     @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
-    @Column(nullable = false)
+    @Column(insertable = false)
     private LocalDateTime updatedAt;
 
     @Column(nullable = false)

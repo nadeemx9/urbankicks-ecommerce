@@ -14,14 +14,16 @@ import java.time.LocalDateTime;
 public class Token {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer tokenId;
 
     private String token;
-    private LocalDateTime createdAt;
+
+    @Column(nullable = false, updatable = false)
     private LocalDateTime expiresAt;
+
     private LocalDateTime validatedAt;
 
     @ManyToOne
-    @JoinColumn(name = "userId", nullable = false)
+    @JoinColumn(name = "user_id", nullable = false)
     private UserRegister user;
 }

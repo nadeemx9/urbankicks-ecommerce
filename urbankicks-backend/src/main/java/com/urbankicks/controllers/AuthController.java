@@ -3,6 +3,7 @@ package com.urbankicks.controllers;
 import com.urbankicks.models.AuthenticationRequest;
 import com.urbankicks.models.AuthenticationResponse;
 import com.urbankicks.services.AuthService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,7 +21,7 @@ public class AuthController {
     // Login
     @PostMapping("/authenticate")
     public ResponseEntity<AuthenticationResponse> authenticate(
-            @RequestBody AuthenticationRequest request
+            @RequestBody @Valid AuthenticationRequest request
     ) {
         return ResponseEntity.ok(authService.authenticate(request));
     }
