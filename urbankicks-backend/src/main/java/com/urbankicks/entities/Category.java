@@ -30,4 +30,7 @@ public class Category {
 
     @Column(insertable = false)
     private LocalDateTime updatedAt;
+
+    @Column(nullable = false)
+    private Boolean isActive;
 }

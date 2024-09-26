@@ -39,23 +39,71 @@ public class DataPreInitialization {
             Gender unisex = createGenderIfNotExists(Gender.GenderName.UNISEX);
 
             // Initialize brands
-            List<String> brands = Arrays.asList("Nike", "Adidas", "Puma", "Reebok", "New Balance");
+            List<String> brands = Arrays.asList(
+                    "Nike", "Adidas", "Puma", "Reebok", "Converse", "Vans",
+                    "Under Armour", "New Balance", "Asics", "Skechers"
+            );
             for (String brandName : brands) {
                 Brand brand = new Brand();
                 brand.setBrandName(brandName);
                 brand.setCreatedAt(LocalDateTime.now());
+                brand.setIsActive(true);
                 if (!brandExists(brand)) {
                     brandRepository.save(brand);
                 }
             }
 
-            // Initialize categories
+            // Initialize Men's Footwear Categories
             createCategoryIfNotExists("Casual Shoes", male);
             createCategoryIfNotExists("Formal Shoes", male);
-            createCategoryIfNotExists("Sports Shoes", male);
+            createCategoryIfNotExists("Loafers", male);
+            createCategoryIfNotExists("Sneakers", male);
+            createCategoryIfNotExists("Boots", male);
+            createCategoryIfNotExists("Oxfords", male);
+            createCategoryIfNotExists("Brogues", male);
+            createCategoryIfNotExists("Sandals", male);
+            createCategoryIfNotExists("Slippers", male);
+
+            // Initialize Women's Footwear Categories
             createCategoryIfNotExists("Heels", female);
+            createCategoryIfNotExists("Flats", female);
+            createCategoryIfNotExists("Wedges", female);
+            createCategoryIfNotExists("Ballet Flats", female);
+            createCategoryIfNotExists("Pumps", female);
+            createCategoryIfNotExists("Boots", female);
+            createCategoryIfNotExists("Mules", female);
+            createCategoryIfNotExists("Sneakers", female);
+            createCategoryIfNotExists("Sandals", female);
+            createCategoryIfNotExists("Slippers", female);
+
+            // Initialize Kids' Footwear Categories (Unisex)
             createCategoryIfNotExists("Boys' Shoes", unisex);
-            // Add other categories similarly...
+            createCategoryIfNotExists("Girls' Shoes", unisex);
+            createCategoryIfNotExists("School Shoes", unisex);
+            createCategoryIfNotExists("Sneakers", unisex);
+            createCategoryIfNotExists("Sandals", unisex);
+            createCategoryIfNotExists("Boots", unisex);
+            createCategoryIfNotExists("Slippers", unisex);
+
+            // Initialize Sports and Outdoor Categories (Unisex)
+            createCategoryIfNotExists("Running Shoes", unisex);
+            createCategoryIfNotExists("Hiking Boots", unisex);
+            createCategoryIfNotExists("Training Shoes", unisex);
+            createCategoryIfNotExists("Basketball Shoes", unisex);
+            createCategoryIfNotExists("Football Shoes", unisex);
+            createCategoryIfNotExists("Tennis Shoes", unisex);
+            createCategoryIfNotExists("Cleats", unisex);
+
+            // Initialize Specialty Footwear Categories (Unisex)
+            createCategoryIfNotExists("Orthopedic Shoes", unisex);
+            createCategoryIfNotExists("Waterproof Shoes", unisex);
+            createCategoryIfNotExists("Vegan Footwear", unisex);
+            createCategoryIfNotExists("Slip-resistant Shoes", unisex);
+
+            // Initialize Seasonal Footwear Categories (Unisex)
+            createCategoryIfNotExists("Flip Flops", unisex);
+            createCategoryIfNotExists("Winter Boots", unisex);
+            createCategoryIfNotExists("Rain Boots", unisex);
 
             // Create an Admin User
             if (!userRegisterRepository.existsById(1)) {
@@ -97,6 +145,7 @@ public class DataPreInitialization {
             category.setCategoryName(categoryName);
             category.setGender(gender);
             category.setCreatedAt(LocalDateTime.now());
+            category.setIsActive(true);
             categoryRepository.save(category);
         }
     }

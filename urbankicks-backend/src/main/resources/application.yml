@@ -12,7 +12,7 @@ spring:
     password: ChangeMe@123
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
     show-sql: true
 
 application:
